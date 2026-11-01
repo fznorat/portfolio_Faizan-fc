@@ -21,7 +21,7 @@
   .feature-object__art { max-width: 124px; }
   .feature-object__label { font-size: 1rem; }
   .feature-object__hint { font-size: .64rem; }
-  .stage { --bench-h: 150px; order: 3; flex-direction: column; gap: 2.2rem; width: min(100%, 520px); margin-inline: auto; }
+  .stage { --bench-h: 205px; order: 3; flex-direction: column; gap: 2.2rem; width: min(100%, 520px); margin-inline: auto; }
   .pitch-wrap { width:100%; }
   .pitch { aspect-ratio: 748 / 1146; width: 100%; }
   .pitch__svg--h { display: none; }
@@ -34,8 +34,17 @@
   .coach__name { font-size: 1rem; }
   .coach__role { font-size: .64rem; }
   .coach__cta { font-size: .6rem; }
-  .dugout { flex: none; width: auto; display: grid; justify-items: center; margin-bottom: .6rem; }
+  .dugout { flex: none; width: min(100%, 420px); display: grid; justify-items: center; margin-bottom: .6rem; }
   .dugout__heading { position: static; margin-bottom: .5rem; order: -1; }
+
+  /* Mobile only: keep the full-backs wide, near the touchlines. */
+  .player--alterdune { left: 8%; }
+  .player--airbnb { left: 92%; }
+
+  /* Rotate the existing bench as a whole; keep its original artwork and seats. */
+  .bench-group { transform: rotate(90deg); transform-origin: center; }
+  .bench-seat__jersey { transform: rotate(-90deg); }
+
   .bench-seat::after { right: auto; left: 50%; top: auto; bottom: calc(100% + .3rem); transform: translate(-50%, 4px); }
   .bench-seat:hover::after, .bench-seat:focus-visible::after { transform: translate(-50%, 0); }
 
@@ -104,3 +113,85 @@
 }
 
 @media (max-width: 760px) { .pitch-legend { gap:.3rem .7rem; margin:.25rem auto .5rem; font-size:.58rem; } .pitch-legend__shirt { width:25px; height:23px; flex-basis:25px; } }
+
+
+/* Mobile refinement — Skills and Palmarès panels only */
+@media (max-width: 620px) {
+  /* Keep the tactical board fully visible without distorting its proportions. */
+  .coach-board__surface {
+    min-height: 0;
+    aspect-ratio: 760 / 300;
+  }
+
+  .coach-board__magnet {
+    width: 36px;
+  }
+  .coach-board__magnet--three {
+    width: 42px;
+  }
+  .coach-board__magnet--one { left: 17%; }
+  .coach-board__magnet--two { left: 39%; }
+  .coach-board__magnet--three { left: 61%; }
+  .coach-board__magnet--four { left: 83%; }
+  .coach-board__ghost-magnet {
+    width: 17px;
+  }
+
+  /* Give the four certifications enough vertical room on the two shelves. */
+  .trophy-cabinet {
+    height: 430px;
+  }
+  .trophy-shelf {
+    height: 46%;
+    left: 5%;
+    right: 5%;
+  }
+  .trophy-shelf--upper { top: 1%; }
+  .trophy-shelf--lower { top: 51%; }
+  .trophy-shelf__medals {
+    width: 100%;
+    padding: 1.15rem .25rem .15rem;
+    gap: .2rem;
+  }
+  .medal-display {
+    width: 97%;
+    min-height: 0;
+    gap: .3rem;
+    padding: .15rem .25rem;
+  }
+  .medal-display__icon {
+    flex-basis: 32px;
+    width: 32px;
+    height: 39px;
+  }
+  .medal-disc {
+    left: 2px;
+    width: 27px;
+    height: 27px;
+  }
+  .medal-disc svg {
+    width: 16px;
+    height: 16px;
+  }
+  .medal-ribbon {
+    width: 8px;
+    height: 20px;
+  }
+  .medal-ribbon--left { left: 9px; }
+  .medal-ribbon--right { right: 9px; }
+  .medal-display__copy {
+    gap: .1rem;
+  }
+  .medal-display__title {
+    font-size: .66rem;
+    line-height: 1.1;
+  }
+  .medal-display__date {
+    font-size: .61rem;
+    line-height: 1.15;
+  }
+  .medal-display__detail {
+    font-size: .56rem;
+    line-height: 1.15;
+  }
+}
